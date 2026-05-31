@@ -1,9 +1,11 @@
-    java: 17
 
+workflows:
+  android-workflow:
+    name: Android Build
+    environment:
+      java: 17
     scripts:
-      - chmod +x gradlew
-      - ./gradlew assembleDebug
-
+      - cd android && chmod +x gradlew && ./gradlew assembleDebug
     artifacts:
-      - app/build/outputs/**/*.apk
+      - android/app/build/outputs/**/*.apk
 
