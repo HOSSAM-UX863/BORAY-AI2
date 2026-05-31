@@ -1,24 +1,20 @@
 workflows:
   android-workflow:
     name: Android Build
+
     environment:
       java: 17
 
     scripts:
       - name: Extract Project
         script: |
-          unzip -o "ai boray.zip"
+          unzip -o app.zip
 
       - name: Build APK
         script: |
-          PROJECT_DIR=$(find . -name "settings.gradle.kts" -exec dirname {} \; | head -n 1)
-
-          if [ -z "$PROJECT_DIR" ]; then
-            PROJECT_DIR=$(find . -name "build.gradle.kts" -exec dirname {} \; | head -n 1)
-          fi
-
-          cd "$PROJECT_DIR"
+          cd app
+          chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
 
     artifacts:
-      - "**/build/outputs/**/*.apk"
+      - "app/**/build/outputs/**/*.apk"
