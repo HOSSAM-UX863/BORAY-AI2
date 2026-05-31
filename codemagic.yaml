@@ -1,9 +1,15 @@
 workflows:
   android-workflow:
     name: Android Build
-    environment:
-      java: 17
     scripts:
-      - cd $(find . -name "gradlew" -exec dirname {} \; | head -n 1) && chmod +x gradlew && ./gradlew assembleDebug
+      - name: Build App
+        script: |
+          GRADLEW_DIR=$(find . -name "gradlew" -exec dirname {} \; | head -n 1)
+          if [ -n "$GRADLEW_DIR" ]; then
+            cd "$GRADLEW_DIR"
+          fi
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
     artifacts:
       - "**/build/outputs/**/*.apk"
+      
