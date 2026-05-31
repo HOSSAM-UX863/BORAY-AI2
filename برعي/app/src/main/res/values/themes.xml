@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Borei" parent="android:Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="android:colorPrimary">@color/md_theme_primary</item>
+        <item name="android:colorPrimaryDark">@color/md_theme_primary</item>
+        <item name="android:colorAccent">@color/md_theme_secondary</item>
+        
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/md_theme_background</item>
+        <item name="android:windowBackground">@color/md_theme_background</item>
+        
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/md_theme_onBackground</item>
+        <item name="android:textColorSecondary">@color/md_theme_onSurfaceVariant</item>
+        
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/md_theme_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/md_theme_background</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

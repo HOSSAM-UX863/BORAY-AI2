@@ -1,0 +1,6 @@
+{
+  "name": "برعي",
+  "description": "Mariout Bek personal study assistant. Analyzes images/text, generates mind maps, Q&As, creates PDFs, manages study chats, schedules alarms, and handles WhatsApp requests.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
