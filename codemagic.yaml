@@ -7,7 +7,14 @@ workflows:
       - name: Extract Project and Build
         script: |
           unzip "ai boray.zip"
+          
+          # الانتقال تلقائياً إلى المجلد المستخرج الذي يحتوي على ملف البناء
+          GRADLEW_DIR=$(find . -name "gradlew" -exec dirname {} \; | head -n 1)
+          if [ -n "$GRADLEW_DIR" ]; then
+            cd "$GRADLEW_DIR"
+          fi
+          
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
-      - app/build/outputs/**/*.apk
+      - "**/build/outputs/**/*.apk"
