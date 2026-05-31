@@ -3,31 +3,22 @@ workflows:
     name: Android Build
     environment:
       java: 17
+
     scripts:
-      - name: Extract Project and Build with Force Override
+      - name: Extract Project
         script: |
           unzip -o "ai boray.zip"
-          
-          GRADLEW_DIR=$(find . -name "build.gradle.kts" -exec dirname {} \; | head -n 1)
-          if [ -n "$GRADLEW_DIR" ]; then
-            cd "$GRADLEW_DIR"
+
+      - name: Build APK
+        script: |
+          PROJECT_DIR=$(find . -name "settings.gradle.kts" -exec dirname {} \; | head -n 1)
+
+          if [ -z "$PROJECT_DIR" ]; then
+            PROJECT_DIR=$(find . -name "build.gradle.kts" -exec dirname {} \; | head -n 1)
           fi
-          
-          # إنشاء ملف إعدادات إضافي لإجبار الـ Gradle على تغيير الإصدار التالف وقت التحميل فوراً
-          mkdir -p gradle
-          cat << 'EOF' > init.gradle
-          allprojects {
-              configurations.all {
-                  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-                      if (details.requested.group == 'io.github.jan-tennert.supabase' && details.requested.name == 'gotrue-kt' && details.requested.version == '3.2.0') {
-                          details.useVersion '3.0.2'
-                      }
-                  }
-              }
-          }
-          EOF
-          
-          # البناء مع تطبيق ملف الإجبار النظيف
-          gradle assembleDebug --no-daemon --init-script init.gradle
+
+          cd "$PROJECT_DIR"
+          ./gradlew assembleDebug --no-daemon
+
     artifacts:
       - "**/build/outputs/**/*.apk"
