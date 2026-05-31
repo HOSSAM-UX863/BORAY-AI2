@@ -1,15 +1,13 @@
-
 workflows:
   android-workflow:
     name: Android Build
     environment:
       java: 17
     scripts:
-      - name: Build Application
+      - name: Extract Project and Build
         script: |
-          # الدخول للمجلد العربي وبناء التطبيق مباشرة
-          cd "بورعي"
+          unzip project.zip
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
-      - "بورعي/app/build/outputs/**/*.apk"
+      - app/build/outputs/**/*.apk
