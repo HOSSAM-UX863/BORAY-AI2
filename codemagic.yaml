@@ -4,7 +4,7 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Extract Project and Build
+      - name: Extract Project and Build with Force Override
         script: |
           unzip -o "ai boray.zip"
           
@@ -13,8 +13,21 @@ workflows:
             cd "$GRADLEW_DIR"
           fi
           
-          find . -type f \( -name "build.gradle.kts" -o -name "libs.versions.toml" \) -exec perl -pi -e 's/3.2.0/3.0.2/g' {} +
+          # إنشاء ملف إعدادات إضافي لإجبار الـ Gradle على تغيير الإصدار التالف وقت التحميل فوراً
+          mkdir -p gradle
+          cat << 'EOF' > init.gradle
+          allprojects {
+              configurations.all {
+                  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+                      if (details.requested.group == 'io.github.jan-tennert.supabase' && details.requested.name == 'gotrue-kt' && details.requested.version == '3.2.0') {
+                          details.useVersion '3.0.2'
+                      }
+                  }
+              }
+          }
+          EOF
           
-          gradle assembleDebug --no-daemon
+          # البناء مع تطبيق ملف الإجبار النظيف
+          gradle assembleDebug --no-daemon --init-script init.gradle
     artifacts:
       - "**/build/outputs/**/*.apk"
