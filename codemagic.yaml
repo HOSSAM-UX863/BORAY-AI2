@@ -4,19 +4,15 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Extract and Build
+      - name: Build Application Natively
         script: |
-          # فك الضغط مع الاستبدال التلقائي الفوري بدون توقف
           unzip -o "ai boray.zip"
           
-          # الانتقال للمجلد الصحيح المستخرج
-          GRADLEW_DIR=$(find . -name "gradlew" -exec dirname {} \; | head -n 1)
+          GRADLEW_DIR=$(find . -name "build.gradle.kts" -exec dirname {} \; | head -n 1)
           if [ -n "$GRADLEW_DIR" ]; then
             cd "$GRADLEW_DIR"
           fi
           
-          # البناء النظيف وتخطي إعدادات الذاكرة التالفة
-          chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          gradle assembleDebug --no-daemon
     artifacts:
       - "**/build/outputs/**/*.apk"
