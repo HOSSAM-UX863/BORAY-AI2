@@ -1,8 +1,21 @@
-- name: Build APK
-  script: |
-    cd app
-    chmod +x gradlew
+workflows:
+  android-workflow:
+    name: Android Build
 
-    sed -i.bak 's/DEFAULT_JVM_OPTS=.*/DEFAULT_JVM_OPTS=""/' gradlew
+    environment:
+      java: 17
 
-    ./gradlew assembleDebug --no-daemon
+    scripts:
+      - name: Extract Project
+        script: |
+          unzip -o app.zip
+
+      - name: Build APK
+        script: |
+          cd app
+          chmod +x gradlew
+          sed -i.bak 's/DEFAULT_JVM_OPTS=.*/DEFAULT_JVM_OPTS=""/' gradlew
+          ./gradlew assembleDebug --no-daemon
+
+    artifacts:
+      - "app/**/build/outputs/**/*.apk"
