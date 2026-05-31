@@ -1,10 +1,10 @@
-ددworkflows:
+workflows:
   android-workflow:
     name: Android Build
     environment:
       java: 17
     scripts:
-      - name: Extract Project and Force Build
+      - name: Extract Project and Build
         script: |
           unzip -o "ai boray.zip"
           
@@ -13,7 +13,6 @@
             cd "$GRADLEW_DIR"
           fi
           
-          # استبدال الإصدار التالف برمجياً عبر أداة البث المضمونة
           find . -type f \( -name "build.gradle.kts" -o -name "libs.versions.toml" \) -exec perl -pi -e 's/3.2.0/3.0.2/g' {} +
           
           gradle assembleDebug --no-daemon
