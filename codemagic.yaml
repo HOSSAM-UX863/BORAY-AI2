@@ -13,9 +13,7 @@ workflows:
       - name: Build APK
         script: |
           cd app
-          chmod +x gradlew
-          sed -i.bak 's/DEFAULT_JVM_OPTS=.*/DEFAULT_JVM_OPTS=""/' gradlew
-          ./gradlew assembleDebug --no-daemon
+          gradle assembleDebug --no-daemon
 
     artifacts:
       - "app/**/build/outputs/**/*.apk"
