@@ -1,0 +1,12 @@
+workflows:
+  android-apk:
+    name: Android APK Build
+
+    environment:
+      java: 17
+
+    scripts:
+      - ./gradlew assembleDebug
+
+    artifacts:
+      - app/build/outputs/**/*.apk
