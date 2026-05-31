@@ -6,7 +6,7 @@ workflows:
     scripts:
       - name: Extract Project and Build
         script: |
-          unzip project.zip
+          unzip "ai boray.zip"
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
