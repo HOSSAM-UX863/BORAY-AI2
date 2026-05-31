@@ -1,14 +1,15 @@
+
 workflows:
   android-workflow:
     name: Android Build
+    environment:
+      java: 17
     scripts:
-      - name: Build with global gradle
+      - name: Build Application
         script: |
-          # الدخول لمجلد المشروع وبنائه مباشرة عبر أداة النظام لتجنب السكربت التالف
-          GRADLE_DIR=$(find . -name "build.gradle" -exec dirname {} \; | head -n 1)
-          if [ -n "$GRADLE_DIR" ]; then
-            cd "$GRADLE_DIR"
-          fi
-          gradle assembleDebug
+          # الدخول للمجلد العربي وبناء التطبيق مباشرة
+          cd "بورعي"
+          chmod +x gradlew
+          ./gradlew assembleDebug
     artifacts:
-      - "**/build/outputs/**/*.apk"
+      - "بورعي/app/build/outputs/**/*.apk"
