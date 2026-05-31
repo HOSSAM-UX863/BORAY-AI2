@@ -4,15 +4,21 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Build Application Natively
+      - name: Extract Project, Fix Dependency and Build
         script: |
+          # 1. فك الضغط
           unzip -o "ai boray.zip"
           
+          # 2. الانتقال للمجلد الصحيح
           GRADLEW_DIR=$(find . -name "build.gradle.kts" -exec dirname {} \; | head -n 1)
           if [ -n "$GRADLEW_DIR" ]; then
             cd "$GRADLEW_DIR"
           fi
           
+          # 3. تعديل إصدار مكتبة Supabase تلقائياً إلى نسخة مستقرة وموجودة (3.0.2) بدلاً من (3.2.0)
+          find . -type f \( -name "build.gradle.kts" -o -name "libs.versions.toml" \) -exec sed -i 's/3.2.0/3.0.2/g' {} +
+          
+          # 4. بدء البناء النظيف
           gradle assembleDebug --no-daemon
     artifacts:
       - "**/build/outputs/**/*.apk"
