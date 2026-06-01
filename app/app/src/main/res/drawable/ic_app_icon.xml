@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Black background -->
+    <item android:drawable="@android:color/black" />
+    
+    <!-- Note: Arabic text "برعي" needs to be added as PNG image files 
+         in mipmap directories. Create PNG images with black background 
+         and gold text "برعي" and place them in:
+         - mipmap-mdpi/ic_launcher.png (48x48)
+         - mipmap-hdpi/ic_launcher.png (72x72)
+         - mipmap-xhdpi/ic_launcher.png (96x96)
+         - mipmap-xxhdpi/ic_launcher.png (144x144)
+         - mipmap-xxxhdpi/ic_launcher.png (192x192) -->
+</layer-list>

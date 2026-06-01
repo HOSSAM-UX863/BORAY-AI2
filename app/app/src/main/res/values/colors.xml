@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Color Scheme with Beige Background and Black Text -->
+    
+    <!-- Primary Colors -->
+    <color name="md_theme_primary">#5D4037</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#D7CCC8</color>
+    <color name="md_theme_onPrimaryContainer">#3E2723</color>
+    
+    <!-- Secondary Colors -->
+    <color name="md_theme_secondary">#8D6E63</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#EFEBE9</color>
+    <color name="md_theme_onSecondaryContainer">#4E342E</color>
+    
+    <!-- Tertiary Colors -->
+    <color name="md_theme_tertiary">#6D4C41</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#D7CCC8</color>
+    <color name="md_theme_onTertiaryContainer">#3E2723</color>
+    
+    <!-- Error Colors -->
+    <color name="md_theme_error">#BA1A1A</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_errorContainer">#FFDAD6</color>
+    <color name="md_theme_onErrorContainer">#410002</color>
+    
+    <!-- Background Colors - Beige/Light Warm Gray -->
+    <color name="md_theme_background">#F5F5DC</color>
+    <color name="md_theme_onBackground">#000000</color>
+    
+    <!-- Surface Colors -->
+    <color name="md_theme_surface">#F5F5DC</color>
+    <color name="md_theme_onSurface">#000000</color>
+    <color name="md_theme_surfaceVariant">#EFEBE9</color>
+    <color name="md_theme_onSurfaceVariant">#4E342E</color>
+    
+    <!-- Outline Colors -->
+    <color name="md_theme_outline">#795548</color>
+    <color name="md_theme_outlineVariant">#BCAAA4</color>
+    
+    <!-- Inverse Colors -->
+    <color name="md_theme_inverseSurface">#3E2723</color>
+    <color name="md_theme_inverseOnSurface">#F5F5DC</color>
+    <color name="md_theme_inversePrimary">#D7CCC8</color>
+</resources>
